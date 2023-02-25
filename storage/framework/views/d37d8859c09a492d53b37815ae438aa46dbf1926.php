@@ -1,4 +1,4 @@
-<!doctype html>
+!<!doctype html>
 <html lang="en">
   <head>
     <title>Title</title>
@@ -24,23 +24,23 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($customer as $c)
+            <?php $__currentLoopData = $customer; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $c): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <tr>
-                <td>{{$c->name}}</td>
-                <td>{{$c->address}}</td>
-                <td>{{$c->country}}</td>
-                <td>{{$c->city}}</td>
-                <td>{{$c->dob}}</td>
+                <td><?php echo e($c->name); ?></td>
+                <td><?php echo e($c->address); ?></td>
+                <td><?php echo e($c->country); ?></td>
+                <td><?php echo e($c->city); ?></td>
+                <td><?php echo e($c->dob); ?></td>
                 <td>
-                  <a href="{{url('/customer/delete/')}}/{{$c->customer_id}}">
+                  <a href="<?php echo e(url('/customer/delete/')); ?>/<?php echo e($c->customer_id); ?>">
                   <button type="button" class="btn btn-danger">Delete</button>
                   </a>
-                  <a href="{{url('/customer/edit/')}}/{{$c->customer_id}}">
+                  <a href="<?php echo e(url('/customer/edit/')); ?>/<?php echo e($c->customer_id); ?>">
                   <button type="button" class="btn btn-primary">Edit</button>
                   </a>
                 </td>
             </tr>
-            @endforeach
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </tbody>
     </table>
 
@@ -50,4 +50,4 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </body>
-</html>
+</html><?php /**PATH D:\Xampp\htdocs\demo_project\resources\views/getcustomerdata.blade.php ENDPATH**/ ?>

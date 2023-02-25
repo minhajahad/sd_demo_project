@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\StudentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +21,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 Route::get('/user',[UserController::class, 'getUser']);
 Route::get('/register',[RegisterController::class, 'getUser']);
 Route::post('/register',[RegisterController::class, 'registerUser']);
@@ -29,3 +31,10 @@ Route::get('/customer/viewcustomer',[CustomerController::class, 'getcustomerview
 Route::get('/customer/delete/{id}',[CustomerController::class, 'deleteCustomer']);
 Route::get('/customer/edit/{id}',[CustomerController::class, 'editCustomer']);
 Route::post('/customer/update/{id}',[CustomerController::class, 'update']);
+
+Route::get('/student',[StudentController::class,'index']);
+Route::get('/addstudent',[StudentController::class,'create']);
+Route::post('/addstudent',[StudentController::class,'store']);
+Route::get('/student/delete/{id}',[StudentController::class, 'deleteStudent']);
+Route::get('/student/edit/{id}',[StudentController::class, 'editStudent']);
+Route::post('/student/update/{id}',[StudentController::class, 'update']);

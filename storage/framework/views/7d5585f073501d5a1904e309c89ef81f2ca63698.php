@@ -190,7 +190,6 @@ endif;
 unset($__errorArgs, $__bag); ?>
             </span>
             </div>
-
             <div class="mb-3">
               <label for="city" class="form-label">City</label>
               <input
@@ -219,7 +218,7 @@ unset($__errorArgs, $__bag); ?>
             <div class="mb-3">
               <label for="dob" class="form-label">Date of birth</label>
               <input
-                type="date"
+                type="dob"
                 class="form-control"
                 id="dob"
                 name="dob"

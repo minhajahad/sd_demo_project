@@ -1,13 +1,12 @@
-
 <?php $__env->startSection('title', 'Add new students'); ?>
 <?php $__env->startSection('page-content'); ?>
 <div class="container">
     <div class="card">
         <div class="card-header">
-            <h4>Add new Student</h4>
+            <h3>Add new Student</h3>
             <?php if(session('status')): ?>
             <?php endif; ?>
-            <h4 class="aler alert-primary"><?php echo e(session('status')); ?></h4>
+            <h3 class="aler alert-primary"><?php echo e(session('status')); ?></h3>
         </div>
         <div class="card-body">
             <form action="<?php echo e(url('/addstudent')); ?>" method="post" enctype="multipart/form-data">

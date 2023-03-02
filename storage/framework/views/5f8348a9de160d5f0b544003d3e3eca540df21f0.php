@@ -9,8 +9,8 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
 </head>
 <body>
-<form action="{{url('/')}}/register" method="post">
-    @csrf
+<form action="<?php echo e(url('/')); ?>/register" method="post">
+    <?php echo csrf_field(); ?>
     
     
 <div class="container text-center">
@@ -23,36 +23,68 @@
             <label for="name" class="form-label">Name</label>
             <input type="text" class="form-control" id="name" placeholder="" name="name">
             <span class="text-danger">
-                @error('name')
-                    {{$message}}
-                @enderror
+                <?php $__errorArgs = ['name'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                    <?php echo e($message); ?>
+
+                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
             </span>
         </div>
         <div class="mb-3">
             <label alig for="email" class="form-label">Email address</label>
             <input type="email" class="form-control" id="email" placeholder="" name="email">
             <span class="text-danger">
-                @error('email')
-                    {{$message}}
-                @enderror
+                <?php $__errorArgs = ['email'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                    <?php echo e($message); ?>
+
+                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
             </span>
         </div>
         <div class="mb-3">
             <label for="password" class="form-label">Password</label>
             <input type="password" class="form-control" id="password" placeholder="" name="password">
             <span class="text-danger">
-                @error('password')
-                    {{$message}}
-                @enderror
+                <?php $__errorArgs = ['password'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                    <?php echo e($message); ?>
+
+                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
             </span>
         </div>
         <div class="mb-3">
             <label for="confirm_password" class="form-label">Confirm Password</label>
             <input type="password" class="form-control" id="confirm_password" placeholder="" name="confirm_password">
             <span class="text-danger">
-                @error('confirm_password')
-                    {{$message}}
-                @enderror
+                <?php $__errorArgs = ['confirm_password'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                    <?php echo e($message); ?>
+
+                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
             </span>
         </div>
         <button class= "btn btn-primary">Submit</button>
@@ -64,3 +96,4 @@
 </form>
 </body>
 </html>
+<?php /**PATH D:\Xampp\htdocs\demo_project\resources\views/register.blade.php ENDPATH**/ ?>

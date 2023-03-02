@@ -9,4 +9,4 @@
 <body>
     <h3>User page</h3>
 </body>
-</html>
+</html><?php /**PATH D:\Xampp\htdocs\demo_project\resources\views/user.blade.php ENDPATH**/ ?>

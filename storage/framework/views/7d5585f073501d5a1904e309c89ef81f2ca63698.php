@@ -112,9 +112,9 @@
       <div class="row">
         <div class="col"></div>
         <div class="col">
-          <h3 class="text-center text-primary">{{$title}}</h3>
-          <form action="{{$url}}" method="post">
-            @csrf
+          <h3 class="text-center text-primary"><?php echo e($title); ?></h3>
+          <form action="<?php echo e($url); ?>" method="post">
+            <?php echo csrf_field(); ?>
             <div class="mb-3">
               <label for="name" class="form-label">Name</label>
               <input
@@ -123,12 +123,20 @@
                 id="name"
                 name="name"
                 autocomplete="off"
-                value="{{$customer->name}}"
+                value="<?php echo e($customer->name); ?>"
               />
               <span class="text-danger">
-                @error('name')
-                    {{$message}}
-                @enderror
+                <?php $__errorArgs = ['name'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                    <?php echo e($message); ?>
+
+                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
             </span>
             </div>
 
@@ -141,12 +149,20 @@
                 name="address"
                 rows="3"
                 autocomplete="off"
-                value="{{$customer->address}}"
+                value="<?php echo e($customer->address); ?>"
               />
               <span class="text-danger">
-                @error('address')
-                    {{$message}}
-                @enderror
+                <?php $__errorArgs = ['address'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                    <?php echo e($message); ?>
+
+                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
             </span>
             </div>
 
@@ -158,12 +174,20 @@
                 id="country"
                 name="country"
                 autocomplete="off"
-                value="{{$customer->country}}"
+                value="<?php echo e($customer->country); ?>"
               />
               <span class="text-danger">
-                @error('country')
-                    {{$message}}
-                @enderror
+                <?php $__errorArgs = ['country'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                    <?php echo e($message); ?>
+
+                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
             </span>
             </div>
 
@@ -175,12 +199,20 @@
                 id="city"
                 name="city"
                 autocomplete="off"
-                value="{{$customer->city}}"
+                value="<?php echo e($customer->city); ?>"
               />
               <span class="text-danger">
-                @error('city')
-                    {{$message}}
-                @enderror
+                <?php $__errorArgs = ['city'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                    <?php echo e($message); ?>
+
+                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
             </span>
             </div>
 
@@ -192,7 +224,7 @@
                 id="dob"
                 name="dob"
                 autocomplete="off"
-                value="{{$customer->dob}}"
+                value="<?php echo e($customer->dob); ?>"
               />
             </div>
 
@@ -203,4 +235,4 @@
       </div>
     </div>
   </body>
-</html>
+</html><?php /**PATH D:\Xampp\htdocs\demo_project\resources\views/customer_view.blade.php ENDPATH**/ ?>

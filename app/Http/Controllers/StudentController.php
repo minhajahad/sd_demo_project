@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-
 use Illuminate\Http\Request;
 use App\Models\Student;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class StudentController extends Controller
 {
@@ -15,7 +16,8 @@ class StudentController extends Controller
      */
     public function index()
     {
-        //
+        $student = Student::all();
+        return view('students.index',compact('student'));
     }
 
     /**
@@ -37,23 +39,23 @@ class StudentController extends Controller
     public function store(Request $request)
     {
         $student = new Student;
-        $student->student_name = $request['name'];
-        $student->department = $request['department'];
-        $student->gender = $request['gender'];
+        $student->name = $request->name;
+        $student->course = $request->course;
+        $student->gender = $request->gender;
 
-        if($request->hasfile('image')){
+        if($request->hasfile('image'))
+        {
             $file = $request->file('image');
             $ext = $file->getClientOriginalExtension();
-            $fileName = time().'.'.$ext;
-            $file->move('uploads/students', $fileName);
-            $student->image = $fileName;
+            $filename = time().'.'.$ext;
+            $file->move(public_path('uploads/students'),$filename);
+            $student->image = $filename;
+
         }
 
-
-
         $student->save();
+        return redirect()->back()->with('status','Student Added Successfully');
 
-        return redirect()->back()->with('status', 'Student added successfully');
     }
 
     /**
@@ -75,7 +77,9 @@ class StudentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $student = Student::find($id);
+        return view('students.edit',compact('student'));
+
     }
 
     /**
@@ -87,7 +91,28 @@ class StudentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $student = Student::find($id);
+        $student->name = $request->name;
+        $student->gender = $request->gender;
+        $student->course = $request->course;
+
+        if($request->hasfile('image'))
+        {
+            $destination = 'uploads/students'.$student->image;
+            if(File::exists($destination))
+            {
+                File::delete($destination);
+            }
+            $file = $request->file('image');
+            $ext = $file->getClientOriginalExtension();
+            $filename = time().'.'.$ext;
+            $file->move('uploads/students',$filename);
+            $student->image = $filename;
+
+        }
+
+        $student->update();
+        return redirect()->back()->with('status','Student Updated Successfully');
     }
 
     /**
@@ -98,6 +123,17 @@ class StudentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $student = Student::find($id); 
+        $destination =  public_path().'/uploads/students/'.$student->image;
+        if(File::exists($destination))
+        {
+            unlink($destination);
+            File::delete($destination);
+            #Storage::delete($destination);
+        }
+
+        $student->delete();
+        return redirect()->back()->with('status','Student Deleted Successfully');
+
     }
 }
